@@ -1,0 +1,16 @@
+﻿.imagen{
+	margin-top: 10%;
+	margin-left: 10%;
+	height: 500px;
+	width: auto;
+}
+
+.nombre{
+	font-family: 'Nunito', sans-serif;
+}
+
+select{
+	display: block !important;
+}
+
+

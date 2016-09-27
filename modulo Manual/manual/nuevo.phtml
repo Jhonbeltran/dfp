@@ -1,0 +1,186 @@
+<h2>Ingreso Contabilidad</h2>
+
+<form id="form" name="form" method="post" action="">
+    <input type="hidden" value="1" name="guardar" />
+    <input type="hidden" value="<?php if(isset($this->datos)) {echo $this->datos['i'];}else{echo 0;} ?>" id="i" name="i" />
+    <input type="hidden" value="0" id="debito" name="debito"/>
+    <input type="hidden" value="0" id="credito" name="credito"/>
+    <input type="hidden" id="consecutivo" name="consecutivo" value="<?php if(isset($this->datos)) {echo $this->datos['consecutivo'];}else{echo ($this->consecutivo['0']['consecutivo']+1);} ?>" />
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label>Fecha: &nbsp; </label>
+                    <input type="date" class="form-control" name="fecha" value="<?php if(isset($this->datos)) echo $this->datos['fecha']; ?>" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label>Consecutivo: &nbsp; </label>
+                    <label for="" style="color:red; font-size:16pt;"><?php if(isset($this->datos)) {echo $this->datos['consecutivo'];}else{echo ($this->consecutivo['0']['consecutivo']+1);} ?></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label>No. Documento: &nbsp; </label>
+                    <input type="text" class="form-control" name="documento" value="<?php if(isset($this->datos)) echo $this->datos['documento']; ?>" placeholder="No. documento" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label>Descripción:  &nbsp; </label>
+                    <input type="text" class="form-control" name="descripcion" value="<?php if(isset($this->datos)) echo $this->datos['descripcion']; ?>" placeholder="Descripción" required>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <br>
+
+    <table id="cuentas" class="table table-bordered center">
+        <thead>
+            <th>Cuenta</th>
+            <!--<th>Nombre</th>-->
+            <th>Valor</th>
+            <th>Naturaleza</th>
+
+        </thead>
+
+        
+        <tr>
+            <td>
+                <select id="cuenta0"  class="form-control" name="cuenta0">
+                  <option value="0" disabled selected>Seleccione...</option>
+                  <?php for($i = 0; $i < count($this->puc); $i++): ?>
+                    <option value="<?php echo $this->puc[$i]['id']; ?>"><?php echo $this->puc[$i]['codigo']." - ".$this->puc[$i]['nombre']; ?></option>          
+                  <?php endfor;?>
+                </select>
+            </td>
+            <!--<td>
+                <input id="nombre0" type="text" class="form-control" name="nombre0" value="<?php if(isset($this->datos)) echo $this->datos['nombre0']; ?>" placeholder="Cuenta..." required>
+            </td>-->
+            <td>
+                <input id="valor0" type="text" class="form-control" name="valor0" value="<?php if(isset($this->datos)) echo $this->datos['valor0']; ?>" placeholder="1000" required>
+            </td>
+            <td>
+                <select id="naturaleza0" class="form-control" name="naturaleza0">
+                  <option value="0" disabled selected>Seleccione...</option>
+                  <option value="1"> Debito </option>          
+                  <option value="2"> Credito </option>          
+                  
+                </select>
+            </td>
+        </tr>
+
+    </table>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for=""><a href="#" onclick="AgregarCampos();">Agregar Campos</a></label>
+            &nbsp;&nbsp;&nbsp;
+            <label for=""><a href="#" onclick="QuitarCampos();">Quitar Campos</a></label>
+        </div>
+        <div class="col-md-6">
+            <button type="submit" onclick="ValidarCuentas();" class="btn btn-default">Guardar</button>
+        </div>
+    </div>
+
+</form>
+    
+
+
+<script type="text/javascript">
+    var nextinput = 0;
+
+    function AgregarCampos(){
+        nextinput++;
+        //campos = '<input type="text" size="20" id="campo' + nextinput + '"&nbsp; name="campo' + nextinput + '"&nbsp; />';
+//$('#tablaSocioeconomica tr:last').after();
+        campos = '<tr id="campo' + nextinput + '">'+
+                    '<td> '+
+                    '    <select id="cuenta' + nextinput + '" class="form-control" name="cuenta' + nextinput + '">'+
+                    '      <option value="0" disabled selected>Seleccione...</option>'+
+                    '      <?php for($i = 0; $i < count($this->puc); $i++): ?>'+
+                    '        <option value="<?php echo $this->puc[$i]['id']; ?>"><?php echo $this->puc[$i]['codigo']." ".$this->puc[$i]['nombre']; ?></option>  '+        
+                    '      <?php endfor;?>'+
+                    '    </select> '+
+                    '</td> '+
+                    //'<td> '+
+                    //'    <input id="nombre' + nextinput + '" type="text" class="form-control" name="nombre' + nextinput + '"  placeholder="Cuenta..." required /> '+
+                    //'</td> '+
+                    '<td> '+
+                    '    <input id="valor' + nextinput + '" type="text" class="form-control" name="valor' + nextinput + '"  placeholder="1000" required /> '+
+                    '</td> '+
+                    '<td> '+
+                    '    <select id="naturaleza' + nextinput + '" class="form-control" name="naturaleza' + nextinput + '"> '+
+                    '      <option value="0" disabled selected>Seleccione...</option> '+
+                    '      <option value="1"> Debito </option>  '+
+                    '      <option value="2"> Credito </option>  '+       
+                          
+                    '   </select> '+
+                    '</td> '+
+                '</tr>';
+        $("#cuentas").append(campos);
+        $("#i").val(nextinput);
+    }
+
+    function QuitarCampos(){
+        if (nextinput > 0){
+
+            $("#campo"+nextinput).remove(); 
+            nextinput--;
+            $("#i").val(nextinput);
+        }
+    }
+
+    
+
+    function ValidarCuentas(){
+        var debito=0;
+        var credito=0;
+
+        for (var i = 0; i <= $("#i").val(); i++) {
+            if ($("#naturaleza"+i).val() == '1') {
+                debito = debito + parseInt($("#valor"+i).val(),10);
+            }else{
+                credito = credito + parseInt($("#valor"+i).val(),10);
+            }
+        }
+         
+        if (credito != debito) {
+            alert("Estan desbalanceadas!!  Debito: "+debito+ " Credito: "+credito);
+            $("#form").submit(false);
+        }else{
+            $("#debito").val(debito);
+            $("#credito").val(credito);
+            ("#form").submit();
+        }
+/*
+        $( "#form" ).submit(function( event ) {
+          if (credito != debito) {
+                alert("Estan desbalanceadas!!  Debito: "+debito+ " Credito: "+credito);
+                return false;
+            }else{
+                $("#debito").val(debito);
+                $("#credito").val(credito);
+
+            }
+        });*/
+
+        
+    }
+
+
+</script>
+
+    

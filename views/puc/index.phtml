@@ -1,0 +1,76 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 l6">
+            <h4>Plan único de cuentas</h4>
+
+            <form name="form1" method="post" action="">
+                <input type="hidden" value="1" name="consultar"/>
+
+                <p>
+                    <input type="text" name="valor" value="<?php if(isset($this->datos)) echo $this->datos['codigo']; ?>" placeholder="Buscar Cuenta..."/>
+                    <input type="submit" value="Consultar" class="btn lime darken-1" />
+                </p>
+
+            </form>
+        </div>
+    
+        <div class="col s12 l6">
+            <h4>Registrar: </h4>
+            <form name="form1" method="post" action="">
+                <input type="hidden" value="1" name="guardar" />
+
+                <div class="col s12 l4">
+                    <input title="Se necesita un código de la cuenta" type="text" name="codigo" value="<?php if(isset($this->datos)) echo $this->datos['codigo']; ?>" required placeholder="Codigo"/>
+                    
+                </div>
+
+                <div class="col s12 l4">
+                    <input title="Se necesita el nombre de la cuenta" type="text" name="nombre" value="<?php if(isset($this->datos)) echo $this->datos['nombre']; ?>" required placeholder="Nombre"/>
+                </div>
+
+                <div class="col s12 l4">
+                    <label>Clasificaci&oacute;n: </label>
+                    <select name="id_clasificacion">
+                      <option value="0" disabled selected>Seleccione...</option>
+                      <?php for($i = 0; $i < count($this->clasificacion); $i++): ?>
+                        <option value="<?php echo $this->clasificacion[$i]['id']; ?>"><?php echo $this->clasificacion[$i]['id'].". ".$this->clasificacion[$i]['clasificacion']; ?></option>          
+                      <?php endfor;?>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <input type="submit" value="Guardar" class="btn lime darken-1" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h4>Cuentas: </h4>
+            <table class="striped">
+                <thead>
+                    <th>C&Oacute;DIGO</th>
+                    <th>NOMBRE</th>
+                    <th>CLASIFICACI&Oacute;N</th>
+                </thead>
+
+            <?php for($i = 0; $i < 10; $i++): ?>
+        
+            <tr>
+                <td><?php echo $this->pucs[$i]['codigo']; ?></td>
+                <td><?php echo $this->pucs[$i]['nombre']; ?></td>
+                <td><?php echo $this->pucs[$i]['clasificacion']; ?></td>
+            </tr>
+        
+            <?php endfor;?>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,97 @@
+<section id="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <h2>Agregar nuevo usuario</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+
+                    
+                        <form name="form1" method="post" action="">
+                        <input type="hidden" value="1" name="enviar" />
+                        <div class="row">
+                            <div class="input-field col s12 l6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="icon_prefix" type="text" class="validate" name="nombres" value="<?php if(isset($this->datos)) echo $this->datos['nombres']; ?>"/>
+                                <label for="icon_prefix">Nombres</label>
+                            </div>
+                            <div class="input-field col s12 l6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="icon_prefix" type="text" class="validate" name="apellidos" value="<?php if(isset($this->datos)) echo $this->datos['apellidos']; ?>" />
+                                <label for="icon_prefix">Apellidos</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 l6">
+                                <i class="material-icons prefix">picture_in_picture</i>
+                                <input id="icon_prefix" type="text" class="validate" name="cedula" value="<?php if(isset($this->datos)) echo $this->datos['cedula']; ?>" />
+                                <label for="icon_prefix">Cedula</label>
+                            </div>
+                            <div class="input-field col s12 l6">
+                                <i class="material-icons prefix">language</i>
+                                <input id="icon_prefix" type="text" class="validate" name="email" value="<?php if(isset($this->datos)) echo $this->datos['email']; ?>" />
+                                <label for="icon_prefix">Correo electrónico</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 l6">
+                                <i class="material-icons prefix">phone</i>
+                                <input id="icon_prefix" type="text" class="validate" name="telefono" value="<?php if(isset($this->datos)) echo $this->datos['telefono']; ?>" />
+                                <label for="icon_prefix">Teléfono</label>
+                            </div>
+                            <div class="input-field col s12 l6">
+                                <i class="material-icons prefix">phone</i>
+                                <input id="icon_prefix" type="number" class="validate"/>
+                                <label for="icon_prefix">Móvil</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s12 l6">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="icon_prefix" type="password" name="pass" class="validate"/>
+                                <label for="icon_prefix">Escoge una Contraseña</label>
+                            </div>
+                            <div class="input-field col s12 l6">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="icon_prefix" type="password" name="confirmar" class="validate"/>
+                                <label for="icon_prefix">Repite la contraseña</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 l6">
+                                <label>Rol: </label>
+                                <select name="id_rol">
+                                  <option value="0" disabled selected>Seleccione...</option>
+                                  <?php for($i = 0; $i < count($this->rol); $i++): ?>
+                                    <option value="<?php echo $this->rol[$i]['id']; ?>"><?php echo $this->rol[$i]['id'].". ".$this->rol[$i]['rol']; ?></option>          
+                                  <?php endfor;?>
+                                </select>
+                            </div>
+                        </div>
+
+                    <div class="row center">
+                        <div class="col s12">
+                            <input type="submit" class="btn lime darken-1" value="Guardar" />
+                        </div>
+                    </div>   
+                            
+
+                    
+                            
+                            
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+                    

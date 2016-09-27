@@ -1,0 +1,55 @@
+﻿html, body{
+	width: 100%;
+	height: 100%;
+}
+
+body {
+  /* Location of the image
+  background-image: url(http://www.wallhd4.com/wp-content/uploads/2015/03/city-wallpapers-hd-download-30.jpeg); 
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;*/
+  background-color: #464646;
+  margin: 0;
+  padding: 0;
+}
+#fondo{
+	background-image: url('../img/donut.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #464646;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+}
+
+.patron {
+	/*data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGUlEQVQYV2NkYGCoB+IGGGYEMv6jC+BXAQAiYwkB4h6MoAAAAABJRU5ErkJggg==*/
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAF0lEQVQIW2NkYGD4D8SMQAwhYACZ8x8AJHACA7pdvnsAAAAASUVORK5CYII=);
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.fondo-texto-login{
+	background-color: #000;
+    opacity: .7;
+    width: 356px;
+    height: 300px;
+    z-index: -100;
+    position: absolute;
+    left: -25px;
+}
+
+#contenido{
+	background-color: #fff;
+	opacity: 1;
+	min-height: 540px;
+	z-index: -100
+}
+

@@ -1,0 +1,37 @@
+<div class="container">
+    <h2 class="card-panel lime lighten-3 center">Contabilidad Manual</h2>
+
+
+<div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <th>Consecutivo</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Número Recibo</th>
+
+        </thead>
+        
+        <?php if (isset(($this->consultar))): ?>
+            
+        
+        <?php for($i = 0; $i < count($this->consultar); $i++): ?>
+        
+        <tr>
+            <!--<td><a href="<?php echo BASE_URL.'manual/ver/'.$this->consultar[$i]['id']; ?>"><?php echo $this->consultar[$i]['consecutivo']; ?></a></td>-->
+            <td><?php echo $this->consultar[$i]['consecutivo']; ?></td>
+            <td><?php echo $this->consultar[$i]['fecha']; ?></td>
+            <td><?php echo $this->consultar[$i]['descripcion']; ?></td>
+            <td><?php echo $this->consultar[$i]['numRecibo']; ?></td>
+        </tr>
+        
+        <?php endfor;?>
+    <?php endif ?>
+    </table>
+</div>
+<div>
+    <a href="<?php echo BASE_URL; ?>manual/nuevo" class="btn waves-effect lime blue-grey-text">Nuevo</a>
+</div>
+<br><br>
+
+</div>
