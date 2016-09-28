@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <h4 class="card-panel lime lighten-5 center">Consultar </h4>
+            <h4 class="center">Consultar </h4>
 
             <form name="form1" method="post" action="">
                 <input type="hidden" value="1" name="consultar" />
@@ -26,7 +26,7 @@
     </div>
             <?php if (count($this->consultar)!=0): ?>
     
-            <h4 class="card-panel lime lighten-5 center">Cuentas </h4>
+            <h4 class="center">Cuentas </h4>
 
             <table class="striped centered">
                 <thead>
@@ -35,7 +35,7 @@
                     
                 </thead>
 
-                <?php for($i = 0; $i < 10; $i++): ?>
+                <?php for($i = 0; $i < count($this->consultar); $i++): ?>
             
                 <tr>
                     <td><?php echo $this->consultar[$i]['codigo']; ?></td>
