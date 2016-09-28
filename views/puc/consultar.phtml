@@ -10,29 +10,32 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <h4>Consultar: </h4>
+            <h4 class="card-panel lime lighten-5 center">Consultar </h4>
 
             <form name="form1" method="post" action="">
                 <input type="hidden" value="1" name="consultar" />
-    
-                <p>
-                    <input type="text" name="valor" placeholder="Buscar Cuenta..." />
-                    <input type="submit" value="Consultar" class="btn lime darken-1" />
-                </p>
 
+                    <div class="col s12 m6">
+                        <input type="text" name="valor" placeholder="Buscar Cuenta..." />
+                    </div>
+                    <div class="col s12 m6 center">
+                        <input type="submit" value="Consultar" class="btn lime darken-1" />
+                    </div>
             </form>
+        </div>
+    </div>
             <?php if (count($this->consultar)!=0): ?>
     
-            <h4>Cuentas: </h4>
+            <h4 class="card-panel lime lighten-5 center">Cuentas </h4>
 
-            <table class="striped">
+            <table class="striped centered">
                 <thead>
                     <th>C&Oacute;DIGO</th>
                     <th>NOMBRE</th>
                     
                 </thead>
 
-                <?php for($i = 0; $i < count($this->consultar); $i++): ?>
+                <?php for($i = 0; $i < 10; $i++): ?>
             
                 <tr>
                     <td><?php echo $this->consultar[$i]['codigo']; ?></td>
@@ -44,8 +47,6 @@
             </table>
 
             <?php endif ?>
-        </div>
-    </div>
 </div>
 
 

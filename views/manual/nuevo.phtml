@@ -17,7 +17,6 @@
             <input type="text" class="validate" id="document" name="documento" value="<?php if(isset($this->datos)) echo $this->datos['documento']; ?>" required>
         </div>
     </div>
-    <br>
     <div class="row">
         <div class="input-field col s12">
             <!-- <label>Descripción:  &nbsp; </label>
@@ -67,11 +66,11 @@
 
     <div class="row">
         <div class="col s6">
-            <button type="submit" onclick="ValidarCuentas();" class="btn btn-default">Guardar</button>
+            <button type="submit" onclick="ValidarCuentas();" class="btn waves-effect lime black-text">Guardar</button>
         </div>
 
         <div class="col s6">
-            <label for=""><a href="#" class="btn waves-effect lime blue-grey-text" onclick="AgregarCampos();">Agregar Campos</a></label>
+            <label for=""><a href="#" class="btn waves-effect lime darken-2 blue-grey-text" onclick="AgregarCampos();">Agregar Campos</a></label>
             &nbsp;&nbsp;&nbsp;
             <label for=""><a href="#" class="btn waves-effect lime-text blue-grey" onclick="QuitarCampos();">Quitar Campos</a></label>
         </div>       
